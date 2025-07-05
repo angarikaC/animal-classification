@@ -1,0 +1,12 @@
+import os
+from PIL import Image
+input_folder = "Image Classification/animals/val/lion"
+output_folder = "Image Classification/animals/val/vclean_lion"
+os.makedirs(output_folder, exist_ok=True)
+
+for file_name in os.listdir(input_folder):
+    if file_name.lower().endswith(('jpg', 'jpeg', 'png')):
+        img_path = os.path.join(input_folder,file_name)
+        img = Image.open(img_path)
+        img_resized = img.resize((128,128))
+        img_resized.save(os.path.join(output_folder, file_name))
